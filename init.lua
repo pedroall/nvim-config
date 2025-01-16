@@ -6,12 +6,20 @@ local k = vim.keymap
 vim.call('plug#begin')
 
 Plug('bettervim/yugen.nvim')
-Plug('neoclide/coc.nvim', { ['branch'] = 'release'})
 Plug('nvim-tree/nvim-tree.lua')
 Plug('windwp/nvim-autopairs')
-Plug('prisma/vim-prisma')
+Plug('neovim/nvim-lsp')
 
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.ts_ls.setup{
+    flags = {
+        debounce_text_changes = 500
+    }
+}
+
+vim.diagnostic.config({
+    update_in_insert = true
+})
 
 vim.call('plug#end')
 
