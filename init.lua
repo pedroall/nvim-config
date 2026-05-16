@@ -51,11 +51,11 @@ cmp.setup({
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.ts_ls.setup({
+vim.lsp.config["ts_ls"] = {
 	capabilities = capabilities
-})
-
+}
+vim.lsp.enable("pyright")
+vim.lsp.enable("ts_ls")
 o.number = true
 o.tabstop = 4
 o.smartindent = true
